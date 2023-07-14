@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8e37afb-7100-4fac-b58d-a9e3643c3fb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bai1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bai1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HuffmanShannonFano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HuffmanShannonFano.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +20,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Dang" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -59,8 +61,9 @@
       <list>
         <item itemvalue="Application.test" />
         <item itemvalue="Application.Bai1" />
-        <item itemvalue="Application.Bai1" />
         <item itemvalue="Application.test" />
+        <item itemvalue="Application.Bai1" />
+        <item itemvalue="Application.Bai1" />
       </list>
     </recent_temporary>
   </component>

@@ -12,7 +12,7 @@ public class Bai1 {
         String M = sc.nextLine();
         int m = Integer.parseInt(M);
         //nhap so N
-        System.out.print("Moi nhap  N:");
+        System.out.print("Moi nhap N:");
         String N = sc.nextLine();
         int n = Integer.parseInt(N);
         double I[][] = new double[m][n];
@@ -33,6 +33,7 @@ public class Bai1 {
                 }
             }
         }
+
         //Tính và hiển thị H(X), H(Y),H(X|Y), H(Y|X),H(X,Y),H(Y) − H(Y|X),I(X;Y)
         double entropyX = tinhEntropy(TinhBienPx(I));
         double entropyY = tinhEntropy(TinhBienPy(I));
@@ -41,15 +42,18 @@ public class Bai1 {
         double jointentropy = tinhJointEntropy(I);
         double HYtruHYX = entropyY - entropyHYX;
         double IXY = entropyX + entropyY - jointentropy;
-        System.out.println("H(X): " + entropyX);
-        System.out.println("H(Y): " + entropyY);
-        System.out.println("H(X|Y): " + entropyHXY);
-        System.out.println("H(Y|X): " + entropyHYX);
-        System.out.println("H(X,Y): " + jointentropy);
-        System.out.println("H(Y) - H(Y-X)" + HYtruHYX);
-        System.out.println("I(X,Y): " + IXY);
+        System.out.println("H(X): " + entropyX + " bits");
+        System.out.println("H(Y): " + entropyY + " bits");
+        System.out.println("H(X|Y): " + entropyHXY + " bits");
+        System.out.println("H(Y|X): " + entropyHYX + " bits");
+        System.out.println("H(X,Y): " + jointentropy + " bits");
+        System.out.println("H(Y) - H(Y|X): " + HYtruHYX + " bits");
+        System.out.println("I(X,Y): " + IXY + " bits");
         //Tính D(P(x)||P(y)) và D(P(y)||P(x)
-
+        double entropyTuongDoiPxPy = tinhEntropyTuongDoiPxPy(TinhBienPx(I), TinhBienPy(I), I);
+        System.out.println("D(P(x)||P(y)): " + entropyTuongDoiPxPy + " bits");
+        double entropyTuongDoiPyPx = tinhEntropyTuongDoiPyPx(TinhBienPx(I), TinhBienPy(I), I);
+        System.out.println("D(P(y)||P(x)): " + entropyTuongDoiPyPx + " bits");
     }
 
     //tinh bien P(x)
@@ -123,9 +127,8 @@ public class Bai1 {
         double jointentropy = 0.0;
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) {
-                jointentropy -= I[i][j];
+                jointentropy -= I[i][j] * Math.log(I[i][j]) / Math.log(2);
             }
-
         }
         return jointentropy;
     }
@@ -138,6 +141,39 @@ public class Bai1 {
                 entropy -= i * log2(i);
             }
         }
+        return entropy;
+    }
+
+    public static double tinhEntropyTuongDoiPxPy(double[] p, double[] q, double[][] I) {
+        double entropy = 0.0;
+        //int M = I.length;
+        int N = I[0].length;
+
+        for (int j = 0; j < N; j++) {
+            double px = p[j];
+
+            double py = q[j];
+            if (px > 0 && py > 0) {
+                entropy += px * Math.log(px / py) / Math.log(2);
+            }
+        }
+
+        return entropy;
+    }
+
+    public static double tinhEntropyTuongDoiPyPx(double[] p, double[] q, double[][] I) {
+        double entropy = 0.0;
+        //int M = I.length;
+        int N = I[0].length;
+
+        for (int j = 0; j < N; j++) {
+            double px = p[j];
+            double py = q[j];
+            if (px > 0 && py > 0) {
+                entropy += py * Math.log(py / px) / Math.log(2);
+            }
+        }
+
         return entropy;
     }
 
